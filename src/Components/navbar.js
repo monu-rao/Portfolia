@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
+import PropTypes from 'prop-types'
 import logo from'../assets/logo copy.png';
 import contectImg from'../assets/contact.png'
 import { Link, scrollSpy } from 'react-scroll';
 import menu from'../assets/menu.png'
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [showMenu, setShowMenu] = useState(false);
   return (
 
@@ -13,20 +14,20 @@ const Navbar = () => {
     
     <img src={logo} alt="logo" className='logo object-cover h-12 w-16 ' />
 
-    <div className='max-sm:hidden'>
+    <div className='max-sm:hidden font-medium'>
 
-    <Link activeClass='active' to='intro' spy={true} smooth={true} offset={-100} duration={500} className='cursor-pointer m-4 hover:text-yellow-300 hover:pb-2 hover:border-b-2 hover:border-yellow-300 active:text-yellow-300'>Home</Link>
+    <Link activeClass='active' to='intro' spy={true} smooth={true} offset={-100} duration={500} className='cursor-pointer m-4 hover:text-yellow-300 hover:pb-2 hover:border-b-2 hover:border-yellow-300 active:text-yellow-300'>{props.navTitle}</Link>
 
-    <Link activeClass='active' to='skills' spy={true} smooth={true} offset={10} duration={500} className='cursor-pointer m-4 hover:text-yellow-300 hover:pb-2 hover:border-b-2 hover:border-yellow-300 active:text-yellow-300'>About</Link>
+    <Link activeClass='active' to='skills' spy={true} smooth={true} offset={10} duration={500} className='cursor-pointer m-4 hover:text-yellow-300 hover:pb-2 hover:border-b-2 hover:border-yellow-300 active:text-yellow-300'>{props.navAbout}</Link>
 
-    <Link activeClass='active' to='works' spy={true} smooth={true} offset={0} duration={500} className='cursor-pointer m-4 hover:text-yellow-300 hover:pb-2 hover:border-b-2 hover:border-yellow-300 active:text-yellow-300'>Portfolio</Link>
+    <Link activeClass='active' to='works' spy={true} smooth={true} offset={0} duration={500} className='cursor-pointer m-4 hover:text-yellow-300 hover:pb-2 hover:border-b-2 hover:border-yellow-300 active:text-yellow-300'>{props.navText2}</Link>
 
-    <Link activeClass='active' to='clients' spy={true} smooth={true} offset={10} duration={500} className='cursor-pointer m-4 hover:text-yellow-300 hover:pb-2 hover:border-b-2 hover:border-yellow-300 active:text-yellow-300'>Clients</Link>
+    <Link activeClass='active' to='clients' spy={true} smooth={true} offset={10} duration={500} className='cursor-pointer m-4 hover:text-yellow-300 hover:pb-2 hover:border-b-2 hover:border-yellow-300 active:text-yellow-300'>{props.navText3}</Link>
     </div>
 
-    <button className='bg-white text-black flex justify-center items-center content-center px-4 rounded-full max-sm:hidden' onClick={()=> {
+    <button className='bg-white text-black font-medium flex justify-center items-center content-center px-4 rounded-full max-sm:hidden' onClick={()=> {
       document.getElementById('contact').scrollIntoView({behavior:'smooth'});
-    }}><img src={contectImg} alt="contectImg" className='w-4 h-4 m-4 object-cover' />Contect Me</button>
+    }}><img src={contectImg} alt="contectImg" className='w-4 h-4 m-4 object-cover' />{props.btnText}</button>
     
 
 
@@ -46,6 +47,17 @@ const Navbar = () => {
     </nav>
     
   )
+}
+
+Navbar.propTypes = {
+  navTitle : PropTypes.string.isRequired,
+  navAbout : PropTypes.string
+
+}
+
+Navbar.defaultProps = {
+  navTitle : "Set title here",
+  navAbout : "About"
 }
 
 export default Navbar;

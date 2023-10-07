@@ -12,7 +12,13 @@ function App() {
    <div className='box-border bg-transparent '>
    <div className=' text-white overflow-hidden  '>
 
-   <Navbar/>
+   <Navbar
+    navTitle = "Home"
+    navAbout = "About"
+    navText2 = "Portfolio"
+    navText3 = "Clients"
+    btnText = "Contact Me"
+    />
    <Intro/>
    <Skills/>
    <Works/>
